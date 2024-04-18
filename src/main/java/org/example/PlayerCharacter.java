@@ -2,25 +2,34 @@ package org.example;
 
 public class PlayerCharacter {
 
-    static int x;
-    static int y;
+    static int x = 0;
+    static int y = 0;
 
     public static int getX() {
-        int x = 0;
+
         return x;
     }
 
     public static int getY() {
-        int y = 0;
+
         return y;
     }
 
-    public static boolean move(char arg){
+    public static int move(char arg){
         if (arg == 'w') {
-            y = 1;
-            return true;
+            y++;
+            return getY();
+        } else if (arg == 's') {
+            y--;
+            return getY();
+        } else if (arg == 'a') {
+            x--;
+            return getX();
+        } else if (arg == 'd') {
+            x++;
+            return getX();
         } else {
-            return false;
+            return 0;
         }
     }
 }

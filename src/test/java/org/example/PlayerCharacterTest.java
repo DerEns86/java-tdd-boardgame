@@ -1,10 +1,18 @@
 package org.example;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class PlayerCharacterTest {
+
+    @BeforeEach
+    void resetXandYToZero(){
+        PlayerCharacter.x = 0;
+        PlayerCharacter.y = 0;
+    }
+
 
     @Test
     void getXInitiallyReturnIntZero(){
@@ -29,21 +37,48 @@ public class PlayerCharacterTest {
     }
 
     @Test
-    void whenMovePlayerWithArgumentW_ThenYOneIsTrue() {
+    void returnY1_WhenKeyW() {
         //Given
         char arg = 'w';
         //When
-        boolean actual = PlayerCharacter.move(arg);
+        int actual = PlayerCharacter.move(arg);
         //Then
-        boolean expected = true;
+        int expected = 1;
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void returnYMinus1_WhenKeyS() {
+        //Given
+        char arg = 's';
+        //When
+        int actual = PlayerCharacter.move(arg);
+        //Then
+        int expected = -1;
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void returnXMinus1_WhenKeyA() {
+        //Given
+        char arg = 'a';
+        //When
+        int actual = PlayerCharacter.move(arg);
+        //Then
+        int expected = -1;
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void returnX1_WhenKeyD() {
+        //Given
+        char arg = 'd';
+        //When
+        int actual = PlayerCharacter.move(arg);
+        //Then
+        int expected = 1;
         assertEquals(expected, actual);
     }
 }
 
 
-/*Write a test that ensures that when the method move in the class PlayerCharacter is called with the argument "W",
-the game character moves one position up (after the movement, Y = 1 should be true).
-
-
-Attention: for now, only write the test, do not change anything in src/main/java.
-* */
